@@ -1,0 +1,28 @@
+{
+  "name": "@bcpros/abcpay-v2",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "dev:api": "turbo run dev --filter=@bcpros/abcpay-api",
+    "dev:web": "turbo run dev --filter=@bcpros/abcpay-web",
+    "lint": "turbo run lint",
+    "type-check": "turbo run type-check",
+    "db:generate": "pnpm --filter @bcpros/abcpay-api db:generate",
+    "db:migrate": "pnpm --filter @bcpros/abcpay-api db:migrate",
+    "db:push": "pnpm --filter @bcpros/abcpay-api db:push"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.6",
+    "typescript": "^5.7.3"
+  },
+  "packageManager": "pnpm@9.10.0",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
