@@ -1,46 +1,20 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es6",
-    "module": "es2020",
-    "lib": ["dom", "es2015", "es2017"],
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "emitDecoratorMetadata": true,
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "types": ["vite/client", "node"]
   },
-  "include": ["src/**/*.ts", "scripts/setenv.ts"],
-  "exclude": ["node_modules","**/*.spec.ts"],
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  },
-  "atom": {
-    "rewriteTsconfig": false
-  },
-  "rules": {
-    "no-console": false
-  },
-  "paths": {
-    "@angular/*": ["./node_modules/@angular/*"],
-    "@ng-bootstrap/*": ["../node_modules/@ng-bootstrap/*"],
-    "ngx-bootstrap": ["../node_modules/ngx-bootstrap"],
-    "ngx-bootstrap/*": ["../node_modules/ngx-bootstrap/*"],
-    "path": [
-      "./node_modules/path-browserify"
-    ]
-  }
+  "include": ["src"]
 }

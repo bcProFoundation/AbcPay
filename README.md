@@ -1,45 +1,61 @@
-Ionic version  : 6
-NodeJS version : 14
+# AbcPay
 
-For MAC : 
-Install bundletool --> run : brew install bundletool
+Rebuilt AbcPay wallet for **eCash (XEC)** and **Dogecoin (DOGE)**.
 
-### Android
+- Ionic React (same visual language as the previous AbcPay app: Home / Scan / Wallets)
+- Personal and **m-of-n multisig** accounts
+- Keys stay on the device; the wallet service never sees private keys
+- Chronik-backed BWS in the Bitcore repo (`packages/abcpay-wallet-service`)
+- BTC, BCH, LTC, XPI, ETH, BitPay buy/exchange/gift-card extras are gone
 
-When your development environment is ready, run the `start:android` package script.
+## Stack
 
-```sh
-1. npm run prepare:abcpay
-2. Option 1 : Build Android with Android studio
-    + npm run start:android
-    + Open android studio --> open source abcpay/android
-    + Build and run with android studio
-3. Option 2 : Render .apk file without Android studio 
-    + npm run build:android (.apk file in android/app/build/outputs/aps/debug/app-debug.apk)
-    + npm run build:android-release (.apk file in android/app/build/outputs/aps/release/app-release-unsigned.apk)
--- Note: if build error Run --> : "npx jetify" to fix
-```
+| Layer | Choice |
+| ----- | ------ |
+| UI | Ionic React + Vite |
+| Client crypto | `@bcpros/bitcore-lib-xec` / `@bcpros/bitcore-lib-doge` |
+| Wallet service | TypeScript Fastify + Postgres |
+| Chain data | Chronik |
 
-### iOS
+React was chosen to stay aligned with Atisha Health. Node.js (not Bun) is used on the server because the Bitcore libraries expect Node `Buffer` / crypto.
 
-When your development environment is ready, run the `start:ios` package script.
-
-- Rename '.env.example' file to .env and change AWS_URL_CONFIG variable value, which points to correct the backend API service. 
+## Run
 
 ```sh
-1. npm run prepare:abcpay
-2. npm run env:dev // update AWS_URL_CONFIG
-3. npm run apply // update pinfo.list
-4. npm run start:ios
-5. Build and run with Xcode
+# Wallet service (from bitcore/packages/abcpay-wallet-service)
+docker compose up -d postgres
+pnpm install
+pnpm prisma:generate
+pnpm prisma:migrate
+pnpm dev
 
-_Note: if build returns error. Run to fix : "npx jetify" then "run npm run start:ios" again._
-
-Additional iOS configuration steps require in order to enable notification feature during build. Please refer to: https://capacitorjs.com/docs/guides/push-notifications-firebase#prerequisites for detail:
-
-1. Add the GoogleService-Info.plist file to your iOS app
-2. Add the Firebase SDK via CocoaPods
-3. Update the Project
-4. Add Initialization Code
-
+# App
+cp .env.example .env
+pnpm install
+pnpm dev
 ```
+
+Open `http://localhost:8100`.
+
+`VITE_BWS_URL` defaults to `http://localhost:3232`.
+
+## What this replica keeps
+
+- Home total value, account cards, pull to refresh
+- Wallets tab with key name and accounts
+- Request (QR + BIP44/48 address) and Send
+- Shared wallet create / join via invitation secret
+- Pending proposal sign / reject
+- Address book, theme, display currency, backup phrase
+- Copay request signing (`x-identity` / `x-signature`)
+
+## What was dropped
+
+Buy crypto, Coinbase, WalletConnect, gift cards, debit cards, Lotus/XPI, BTC/BCH/LTC, eToken conversion, merchant/Raipay, BitPay ID.
+
+## Security model
+
+1. BIP39 mnemonic on device
+2. Account xpub registered with BWS
+3. Receive addresses derived locally and checked against the server
+4. Spends are transaction proposals; `m` copayer signatures required before Chronik broadcast

@@ -1,0 +1,267 @@
+:root {
+  --ion-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Roboto, sans-serif;
+  --ion-color-primary: #00658d;
+  --ion-color-primary-rgb: 0, 101, 141;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #00597c;
+  --ion-color-primary-tint: #1a7498;
+  --ion-color-secondary: #4f616e;
+  --ion-color-success: #006c44;
+  --ion-color-warning: #875300;
+  --ion-color-danger: #ba1b1b;
+  --ion-background-color: #fafafb;
+  --color-primary: #00658d;
+  --color-xec: #0080ca;
+  --color-doge: #ba9f33;
+  --header-height: 56px;
+}
+
+body.dark {
+  --ion-background-color: #121417;
+  --ion-text-color: #f4f5f8;
+}
+
+.bp-header ion-toolbar {
+  --background: var(--ion-background-color);
+  --border-width: 0;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+}
+
+.header-brand img.logo {
+  width: 28px;
+  height: 28px;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ion-text-color, #1c1c1e);
+}
+
+.total-amount {
+  padding: 8px 20px 20px;
+}
+
+.total-amount .label {
+  color: #667;
+  font-size: 14px;
+}
+
+.total-amount .value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.unit {
+  font-size: 16px;
+  font-weight: 500;
+  color: #667;
+  margin-left: 4px;
+}
+
+.wallet-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 0 16px 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+body.dark .wallet-card {
+  background: #1c1f24;
+}
+
+.coin-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.wallet-card .meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.wallet-card .name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.wallet-card .sub {
+  color: #70818a;
+  font-size: 13px;
+}
+
+.wallet-card .amount {
+  font-weight: 600;
+  text-align: right;
+}
+
+.balance-hero {
+  color: #fff;
+  border-radius: 16px;
+  margin: 8px 16px 16px;
+  padding: 20px 18px 16px;
+  min-height: 168px;
+  position: relative;
+  overflow: hidden;
+}
+
+.balance-hero.xec {
+  background: linear-gradient(160deg, #0080ca, #005f96);
+}
+
+.balance-hero.doge {
+  background: linear-gradient(160deg, #ba9f33, #8d7718);
+}
+
+.balance-hero .coin {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.balance-hero .amount {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 18px;
+}
+
+.balance-hero .fiat {
+  opacity: 0.85;
+  font-size: 14px;
+}
+
+.action-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0 16px 18px;
+}
+
+.action-row ion-button {
+  --border-radius: 10px;
+  height: 44px;
+  font-weight: 600;
+}
+
+.choice-card {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 0 16px 12px;
+}
+
+body.dark .choice-card {
+  background: #1c1f24;
+}
+
+.choice-card img {
+  width: 48px;
+  height: 48px;
+}
+
+.choice-card h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.choice-card p {
+  margin: 0;
+  color: #70818a;
+  font-size: 13px;
+}
+
+.mnemonic-box {
+  background: #eef3f6;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  word-spacing: 6px;
+}
+
+body.dark .mnemonic-box {
+  background: #1c1f24;
+}
+
+.tx-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+}
+
+.tx-row .badge {
+  width: 36px;
+  height: 36px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: #70818a;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #70818a;
+  padding: 16px 20px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+ion-tab-bar {
+  --background: #fff;
+  border-top: 1px solid rgba(112, 129, 138, 0.16);
+}
+
+body.dark ion-tab-bar {
+  --background: #121417;
+}
+
+.scan-target {
+  width: 220px;
+  height: 220px;
+  border: 2px dashed var(--ion-color-primary);
+  border-radius: 16px;
+  margin: 40px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #70818a;
+  text-align: center;
+  padding: 16px;
+}
+
+.proposal-banner {
+  margin: 0 16px 12px;
+  border-radius: 10px;
+  background: #fff7e6;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ion-item.bp {
+  --padding-start: 16px;
+}
